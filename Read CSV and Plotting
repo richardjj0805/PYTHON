@@ -1,0 +1,66 @@
+#Read CSV
+import numpy as np
+import pandas as pd
+data =pd.read_csv('shijian.csv')
+data.loc[0:10,:]
+
+
+import numpy as np
+import pandas as pd
+data =pd.read_csv('shijian.csv')
+data.loc[0:10,["EMPLOYEE_NAME","team_name"]]
+
+#Mean on Columns and Rows
+data["number_of_days"].mean() 
+data["number_of_days"].mean(axis=1)
+
+#DataFrame
+frame = pd.DataFrame(
+    [
+        [1,2],
+        ["Boris Yeltsin", "Mikhail Gorbachev"]
+    ],
+    index=["row1", "row2"],
+    columns=["column1", "column2"]
+)
+frame
+
+frame = pd.DataFrame(
+    {
+        "column1": [1, "Boris Yeltsin"],
+        "column2": [2, "Mikhail Gorbachev"]
+    }
+)
+frame
+
+#Filter
+import numpy as np
+import pandas as pd
+data =pd.read_csv('shijian.csv')
+score_filter = data["number_of_days"] > 6.3
+filtered_reviews = data[score_filter]
+filtered_reviews.loc[:,:]
+
+#plotting
+#Example 1:
+
+%matplotlib inline
+import numpy as np
+import pandas as pd
+data =pd.read_csv('shijian.csv')
+
+xbox_one_filter2 = (data["team_name"] == "GM - Xarelto GP") & (data["number_of_days"]>6.3 )
+filtered_reviews2 = data[xbox_one_filter2]
+
+filtered_reviews2["number_of_days"].hist()
+
+
+#Example 2:
+%matplotlib inline
+import numpy as np
+import pandas as pd
+data =pd.read_csv('shijian.csv')
+
+xbox_one_filter = (data["team_name"] == "GM - Xarelto HSR TTS") & (data["number_of_days"]>6.3 )
+filtered_reviews = data[xbox_one_filter]
+filtered_reviews["number_of_days"].plot(kind="hist")
