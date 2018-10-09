@@ -1,0 +1,51 @@
+
+
+
+#1.import pacakages
+#2.read the dataset
+#3.split the data based on x(independent) and y(dependent)
+#4.divide the cmoplete dataset into traing and test dataset
+#5.implement our classifie
+#6.implement the graphy
+
+#show Linear Regression Graphy for train dataset
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+sample_data =pd.read_csv("sample_data.csv")
+#split the data based on x(independent) and y(dependent)
+y=sample_data.iloc[:,-1].values
+x=sample_data.iloc[:,0].values
+#divide the cmoplete dataset into traing and test dataset
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=1/5,random_state=0)
+x_train= x_train.reshape(-1, 1)
+y_train= y_train.reshape(-1, 1)
+x_test = x_test.reshape(-1, 1)
+from sklearn.linear_model import LinearRegression
+simplelinearRegression = LinearRegression()
+simplelinearRegression.fit(x_train,y_train)
+plt.scatter(x_train,y_train,color='red')
+plt.plot(x_train,simplelinearRegression.predict(x_train))
+plt.show()
+
+#Predict the y number for given x value
+
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+sample_data =pd.read_csv("sample_data.csv")
+#split the data based on x(independent) and y(dependent)
+y=sample_data.iloc[:,-1].values
+x=sample_data.iloc[:,0].values
+#divide the cmoplete dataset into traing and test dataset
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=2/5,random_state=0)
+x_train= x_train.reshape(-1, 1)
+y_train= y_train.reshape(-1, 1)
+x_test = x_test.reshape(-1, 1)
+from sklearn.linear_model import LinearRegression
+simplelinearRegression = LinearRegression()
+simplelinearRegression.fit(x_train,y_train)
+y_predict_var=simplelinearRegression.predict([[100]])
+y_predict_var
