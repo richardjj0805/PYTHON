@@ -5,6 +5,8 @@ pip3 install jupyter
 
 pip install pandas
 
+pip install sklearn
+
 pip3 install matplotlib
 
 #Run jupyter
