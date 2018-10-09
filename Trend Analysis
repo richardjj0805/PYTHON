@@ -1,0 +1,32 @@
+#Compare the population in US and China in countries.csv
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+sample_data =pd.read_csv("countries.csv")
+sample_data
+us = sample_data[sample_data.country=="United States"]
+china = sample_data[sample_data.country=="China"]
+plt.plot(us.year,us.population/10**6)
+plt.plot(us.year,china.population/10**6)
+plt.xlabel("Year")
+plt.ylabel("Population")
+plt.title("Population Comparison")
+plt.legend(["US","CHINA"])
+plt.show()
+
+#Compare the population in US and China in countries.csv
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+sample_data =pd.read_csv("countries.csv")
+sample_data
+#Compare the population growth in US and China
+us = sample_data[sample_data.country=="United States"]
+china = sample_data[sample_data.country=="China"]
+plt.plot(us.year,us.population/us.population.iloc[0] *100)
+plt.plot(us.year,china.population/china.population.iloc[0] *100)
+plt.xlabel("Year")
+plt.ylabel("Population")
+plt.title("Population growth Comparison (First Year =100)")
+plt.legend(["US","CHINA"])
+plt.show()
