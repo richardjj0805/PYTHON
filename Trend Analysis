@@ -30,3 +30,22 @@ plt.ylabel("Population")
 plt.title("Population growth Comparison (First Year =100)")
 plt.legend(["US","CHINA"])
 plt.show()
+
+#Comparing 2 prodcuts trend for 2018
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+sample_data =pd.read_csv("Sales Comparison.csv")
+data_filter = (sample_data["team_name"] == "SM - Adempas") & (sample_data["prod_name"]=="ADCIRCA" ) & (sample_data["level1_name"]=="NSW" )
+
+data_filter2 = (sample_data["team_name"] == "SM - Adempas") & (sample_data["prod_name"]=="ADEMPAS" )& (sample_data["level1_name"]=="NSW" )
+
+sample_data_ADCIRCA = sample_data[data_filter]
+sample_data_ADEMPAS = sample_data[data_filter2]
+plt.plot(sample_data_ADCIRCA.period_name,sample_data_ADCIRCA.Sales)
+plt.plot(sample_data_ADEMPAS.period_name,sample_data_ADEMPAS.Sales)
+plt.xlabel("month")
+plt.ylabel("Sles")
+plt.title("sales Comparison")
+plt.legend(["ADCIRCA","ADEMPAS"])
+plt.show()
