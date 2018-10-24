@@ -32,6 +32,7 @@ plt.legend(["US","CHINA"])
 plt.show()
 
 #Comparing 2 prodcuts trend for 2018
+
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
@@ -44,8 +45,8 @@ sample_data_ADCIRCA = sample_data[data_filter]
 sample_data_ADEMPAS = sample_data[data_filter2]
 plt.plot(sample_data_ADCIRCA.period_name,sample_data_ADCIRCA.Sales)
 plt.plot(sample_data_ADEMPAS.period_name,sample_data_ADEMPAS.Sales)
-plt.xlabel("month")
-plt.ylabel("Sles")
-plt.title("sales Comparison")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.title("Sales Comparison")
 plt.legend(["ADCIRCA","ADEMPAS"])
 plt.show()
