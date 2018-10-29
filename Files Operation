@@ -1,4 +1,5 @@
-#This is to move file
+#This is to Rename file and Move to other Locations
+
 import os, sys, time, datetime, os.path, shutil, sys
 from os import listdir
 from os.path import isfile, join
