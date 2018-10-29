@@ -1,0 +1,57 @@
+#This is to move file
+import os, sys, time, datetime, os.path, shutil, sys
+from os import listdir
+from os.path import isfile, join
+
+a = datetime.datetime.now().date()
+parent_path = r'C:\Users\shijian.he\Documents\BMS-DOI\\'
+#make file name to display Sunday's Date
+if a.weekday() == 0:
+    a -=datetime.timedelta(days=1)
+if a.weekday() == 1:
+    a -=datetime.timedelta(days=2)
+if a.weekday() == 2:
+    a -=datetime.timedelta(days=3)
+if a.weekday() == 3:
+    a -=datetime.timedelta(days=4)
+if a.weekday() == 4:
+    a -=datetime.timedelta(days=5)
+if a.weekday() == 5:
+    a -=datetime.timedelta(days=6)
+c = a.strftime("%Y%m%d")
+new_path = parent_path + c
+
+
+if not os.path.exists(new_path):
+    os.makedirs(new_path)
+
+onlyfiles = [f for f in listdir(parent_path) if isfile(join(parent_path, f))]
+for f in onlyfiles:
+    print(f)
+print('--------------------------------------------------------------------------------')
+
+list_of_files = dict([('Test.xlsx', 0),
+                      ('Test2.xlsx', 0),
+                      ('Test3.xls', 0),
+                      ('Test4.xlsx', 0)])
+
+for f in onlyfiles:
+    for d in list_of_files:
+        if f[:6] == d[:6]:
+            list_of_files[d] = 1
+            
+for d in list_of_files:
+    if list_of_files[d] == 0:
+        print("The file "+d+" is needed")
+
+
+for x in onlyfiles:
+    if x [:5] == 'Test.':
+        shutil.copy2(parent_path + x, new_path+'\\'+'NewTest_'+c+'.xlsx')
+    elif x [:5]== 'Test2':
+        shutil.copy2(parent_path + x, new_path+'\\'+'NewTest2_-'+c+'.xlsx')
+
+    elif x [:5] =='Test3':
+        shutil.copy2(parent_path + x, new_path+'\\'+c+'NewTest3')
+    elif x [:5] =='Test4':
+        shutil.copy2(parent_path + x, new_path+'\\'+'NewTest4_'+c+'.xls')
